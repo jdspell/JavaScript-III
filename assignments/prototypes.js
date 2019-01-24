@@ -7,7 +7,7 @@
   
   Each constructor function has unique properties and methods that are defined in their block comments below:
 */
-  
+
 /*
   === GameObject ===
   * createdAt
@@ -38,7 +38,8 @@ function CharacterStats(options) {
   this.name = options.name;
 }
 
-CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype = Object.create(GameObject.prototype); //links prototypes
+//CharacterStats.prototype = GameObject.prototype; //replaces prototype
 
 CharacterStats.prototype.takeDamage = function() {
   return `${this.name} took damage`;
@@ -139,6 +140,27 @@ Humanoid.prototype.greet = function() {
 
 
   // Stretch task: 
-  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
-  // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
+   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+
+function Hero(options) {
+  Humanoid.call(this, options);
+}
+
+Hero.prototype.attack = function(villain) {
+  console.log(`Take that ${this.name}`);
+}
+
+function Villain(options) {
+  Humanoid.call(this, options);
+  attack: function attack(hero) {
+    hero.healthPoints - attackValue;
+  }
+}
+
+Villain.prototype.attack = function(hero) {
+  hero.healthPoints - attackValue;
+}
+
+ 
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
